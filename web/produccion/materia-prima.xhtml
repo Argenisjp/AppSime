@@ -1,0 +1,417 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+          <meta name="author" content="Argenis Jose Rangel" />
+          <title>AppSime</title>
+          <!-- Favicon -->
+          <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/img/sime.png" />
+          <!-- Bootstrap Css -->
+          <link rel="stylesheet" href="#{request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
+          <!-- Hoja de estilos -->
+          <link href="#{request.contextPath}/resources/css/info-prod.css" rel="stylesheet" />
+            <!-- Datatable css -->
+          <link rel="stylesheet" href="#{request.contextPath}/resources/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" />
+          <!-- Datatable Responsive -->
+          <link rel="stylesheet" href="#{request.contextPath}/resources/DataTables/Responsive-2.2.3/css/responsive.bootstrap4.min.css" />
+          <link rel="stylesheet" href="#{request.contextPath}/resources/DataTables/Responsive-2.2.3/css/responsive.dataTables.min.css" />
+           <!-- Hoja de estilos de sweeAlert2 -->
+          <link rel="stylesheet" href="#{request.contextPath}/resources/sweetalert2/package/dist/sweetalert2.min.css" />
+          <!-- Google fonts -->
+          <link href="https://fonts.googleapis.com/css?family=Muli:400,700&amp;display=swap" rel="stylesheet" />
+    </h:head>
+    
+    
+    <h:body>
+        <h:form>
+            <div class="d-flex" id="content-wrapper">
+                <!-- Sidebar -->
+                <div class="panel-control" id="panel-c">
+                    <div class="opacidad-panel">
+                        <div class="admin-user">
+                              <img src="#{request.contextPath}/resources/img/Avatar.png" width="100" alt="" /><br />
+                              <!-- <small>Administrador</small> -->
+                              <small>#{usuarioSesion.usuLogin.nombreEmpleado}</small>
+                        </div>
+    
+                        <div class="menu-panel">
+                          <nav>
+                                <ul>
+                                    <li>
+                                        <!--<h:link><i class="fas fa-cart-arrow-down mr-2  lead" />Ventas</h:link>-->
+                                        <a href="#{request.contextPath}/ventas/ventas.xhtml"><i class="fas fa-cart-arrow-down mr-2  lead" />Ventas</a>
+                                    </li>
+                                    <li>
+                                        <!--<h:link><i class="fab fa-steam-square mr-2 lead"/>Producción</h:link>-->
+                                        <a href="#{request.contextPath}/produccion/produccion.xhtml"><i class="fab fa-steam-square mr-2  lead" />Producción</a>
+                                    </li>
+                                    <li>
+                                        <!--<h:link> <i class="fas fa-people-carry mr-2 lead"/>Recursos humanos</h:link>-->
+                                        <a href="#{request.contextPath}/recursosH/rec-humanos.xhtml"><i class="fas fa-people-carry mr-2 lead" />Recursos humanos</a>
+                                    </li>
+                                    <li>
+                                        <!--<h:link ><i class="fas fa-headset mr-2 lead"/>Atención al cliente</h:link>-->
+                                        <a href="#{request.contextPath}/atc/atc-cliente.xhtml"><i class="fas fa-headset mr-2  lead" />Atención al cliente</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-book-reader mr-2  lead" /> Documentación
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="#">Documentación</a>
+                                            <a class="dropdown-item" href="https://drive.google.com/file/d/170FcLTLAAE7ALwUrtzp9V3B46gkESkT4/view?usp=sharing">IEEE-830</a>
+                                            <a class="dropdown-item" href="https://drive.google.com/drive/folders/19hSHLiU3SdnutNQb9qLrzfjEh5mwzdwA?usp=sharing">Fase-1</a>
+                                            <a class="dropdown-item" href="https://drive.google.com/drive/folders/1sGRM-DUPSp8G4Qu6hv2VAGFesQ2yqu7I?usp=sharing">Fase-2</a>
+                                            <a class="dropdown-item" href="https://drive.google.com/drive/folders/13RCHqABpvSbQCo7w9MabBfiQcun1uKur?usp=sharing">Fase-3</a>
+
+                                            <div class="dropdown-divider" />
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                                    
+                        <div class="footer-panel">
+                         <small>IROKO JEANS</small>
+                        </div>
+                  </div>
+                </div><!-- Fin sidebar -->
+                <!-- Page Content -->
+                
+                <div id="page-content-wrapper" class="w-100 bg-light-blue">
+                      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                            <div class="container-fluid" style="margin: 0px 10px;">
+                              <button id="menu-toggle" class="btn btn-outline-dark my-2 my-sm-0 " type="submit"><i class="fas fa-exchange-alt" /></button>
+                                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                  <span class="navbar-toggler-icon" />
+                                  </button>
+                           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+                                    <li class="nav-item ">
+                                        <!--<h:link class="nav-link" outcome="produc"><i class="fas fa-cogs lead mr-2" />Producción</h:link>-->
+                                        <a class="nav-link" href="#{request.contextPath}/produccion/produc.xhtml"><i class="fas fa-cogs lead mr-2" />Producción</a>
+                                    </li> 
+
+                                    <li class="nav-item active">
+                                        <!--<h:link class="nav-link" outcome="materia-prima"><i class="fas fa-tape lead mr-2" />Materia prima</h:link>-->
+                                        <a class="nav-link" href="#{request.contextPath}/produccion/materia-prima.xhtml"><i class="fas fa-tape lead mr-2" />Materia prima</a>                
+                                    </li> 
+
+                                    <li class="nav-item">
+                                        <!--<h:link class="nav-link" outcome="proveedores"><i class="fas fa-people-arrows lead mr-2" />Proveedores</h:link>-->
+                                        <a class="nav-link" href="#{request.contextPath}/produccion/proveedores.xhtml"><i class="fas fa-people-arrows lead mr-2" />Proveedores</a>                
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-user-cog" />
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="#{request.contextPath}/misdatos/misdatos.xhtml"><i class="fas fa-user-edit mr-2" />Mi perfil</a>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-cog mr-1" />Configuración</a>
+                                            <a class="dropdown-item" href="traducir.html"><i class="fas fa-language mr-1 lead" />Traducir</a>
+
+                                            <div class="dropdown-divider" />
+                                            <!--<h:link class="dropdown-item"><i class="fas fa-share-square mr-1" />Cerrar sesión</h:link>-->
+                                            <a class="dropdown-item" href="#{request.contextPath}/index.xhtml"><i class="fas fa-share-square mr-1" />Cerrar sesión</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            </div>
+                      </nav>
+
+                        <div id="content" class="container-fluid p-5">
+                              <section class="">
+                            <!-- MIGAS DE PAN -->
+                                    <div class="migas-pan  ">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                  <nav aria-label="breadcrumb">
+                                                      <ol class="breadcrumb">
+                                                       <!--<h:link class="breadcrumb-item" outcome="index">Inicio</h:link>-->
+                                                        <!--<li class="breadcrumb-item"><a href="pag-principal.html">Inicio</a></li>-->
+
+                                                        <!--<h:link class="breadcrumb-item" outcome="index-admi">Admin</h:link>-->
+                                                        <li class="breadcrumb-item"><a href="#{request.contextPath}/index-admi.xhtml">Admin</a></li>
+
+                                                        <!--<h:link class="breadcrumb-item" outcome="produccion">Producción</h:link>-->
+                                                        <li class="breadcrumb-item"><a href="#{request.contextPath}/produccion.xhtml">Producción</a></li>
+
+                                                        <li class="breadcrumb-item active" aria-current="page">Materia prima</li>
+                                                       </ol>
+                                                     </nav>
+                                               </div>
+                                             </div>      
+                                       </div>
+            
+   
+                                   <!-- CARD DE CLENTE AL POR MAYOR -->
+                                    <div class="card mb-2">
+                                        <div class="card-header">
+                                                <h4><i class="fas fa-tape lead mr-2" style="font-size: 30px;" />MATERIA PRIMA</h4>
+                                        </div>
+                                     </div>
+    
+                                  <!-- FIN DE LA CARD DE CLENTE AL POR MAYOR -->
+                                      <button type="button" class="btn btn-outline-dark  mb-2" data-toggle="modal" data-target="#nuevo-cliente"><i class="far fa-plus-square lead mr-2" />Nueva Materia Prima</button>
+      
+                                      <!-- Modal -->
+      
+                                    <div class="modal fade" id="nuevo-cliente" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-md">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-dark text-white">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Nueva Materia Prima</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                          </button>
+                                                 </div>
+                                                <div class="modal-body">
+                                                      <form action="#" method="post">
+                                                            <div class="form-row">
+    
+                                                                <div class="form-group col-md-12">
+                                                                        <label for=""><b>Tipo de materia Prima</b></label>
+                                                                        <input type="text" class="form-control" name="tipo_mp" id="tipo_mp" placeholder="Ingrese el tipo de materia prima" required="" />
+                                                                 </div>
+
+                                                                    <div class="form-group col-md-12">
+                                                                            <label for=""><b>Cantidad</b></label>
+                                                                            <input type="number" class="form-control" name="cantidad_mp" id="cantidad_mp" placeholder="Cantidad Ingresada" required="" />
+                                                                      </div>
+      
+                                                                    <div class="form-group col-md-12">
+                                                                            <label for="apellidos"><b>Fecha de entrada</b></label>
+                                                                            <input type="date" class="form-control" name="fecha_entrada" id="entrada_mp" placeholder="Fecha del ingreso" required="" />
+                                                                      </div>
+        
+                                                                    <div class="form-group col-md-12">
+                                                                            <label for=""><b>Fecha de salida</b></label>
+                                                                            <input type="date" class="form-control" name="fecha_salida" id="salida_mp" placeholder="Fecha de salida" required="" />
+                                                                    </div>
+                                                                </div>
+                                                          </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submint" class="btn btn-dark" onclick="validar_materiap()"><i class="fas fa-save lead mr-2" />Guardar</button>
+                                                        <button type="submint" class="btn btn-dark" data-dismiss="modal" onclick="return cancelar()"><i class="fas fa-backspace lead mr-2" />Cancelar</button>
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                      </div>
+          
+   
+                                    <table id="tabla" class="table table-striped table-hover table-bordered" width="100%">
+                                        <thead class="thead-dark text-center">
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Tipo</th>
+                                                <th scope="col">Cantidad</th>
+                                                <th scope="col">Fecha de entrada</th>
+                                                <th scope="col">Fecha de salida</th>
+                                                <th scope="col">Acciones</th>
+                                            </tr>
+                                        </thead>
+      
+                                        <tbody class="text-center">
+    
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Hilo De Bordar</td>
+                                                <td>2000 Metros</td>
+                                                <td>20/06/2020</td>
+                                                <td>10/07/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr>
+      
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Botones</td>
+                                                <td>1 Paquete</td>
+                                                <td>07/09/2020</td>
+                                                <td>29/09/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr>
+      
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Hilo De Poliéster</td>
+                                                <td>1000 Metros</td>
+                                                <td>01/03/2020</td>
+                                                <td>05/04/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr>
+      
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td>Tela tipo jogger</td>
+                                                <td>1 Roll 70 mts</td>
+                                                <td>07/02/2020</td>
+                                                <td>01/03/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr> 
+      
+                                            <tr>
+                                                <th scope="row">5</th>
+                                                <td>Tela seda poliéster</td>
+                                                <td>1 Rollo 20 mts</td>
+                                                <td>10/06/2020</td>
+                                                <td>10/07/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr>
+      
+                                            <tr>
+                                                <th scope="row">6</th>
+                                                <td>Botones Dritz Jean</td>
+                                                <td>20 Unidades</td>
+                                                <td>25/08/2020</td>
+                                                <td>05/09/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr> 
+      
+                                            <tr>
+                                                <th scope="row">7</th>
+                                                <td>Jean Tack botones</td>
+                                                <td>12 Unidades</td>
+                                                <td>01/03/2020</td>
+                                                <td>05/04/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr>
+      
+                                            <tr>
+                                                <th scope="row">8</th>
+                                                <td>Tele Jenas</td>
+                                                <td>1 Rollo 20 mts</td>
+                                                <td>01/03/2020</td>
+                                                <td>03/04/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr>
+      
+                                            <tr>
+                                                <th scope="row">9</th>
+                                                <td>Hilo Fino</td>
+                                                <td>1 Caja 200 mts</td>
+                                                <td>06/12/2020</td>
+                                                <td>20/12/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr> 
+
+                                            <tr>
+                                                <th scope="row">10</th>
+                                                <td>Tela tipo jogger</td>
+                                                <td>1 Rollo 20 mts</td>
+                                                <td>10/12/2020</td>
+                                                <td>14/12/2020</td>
+                                                <td> 
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="button" class="btn btn-info"><i class="far fa-edit lead" /></button>
+                                                    <button type="button" class="btn btn-danger" onclick="eliminar_mate();"><i class="fas fa-trash-alt lead" /></button>
+                                                </div>
+                                                </td>
+                                            </tr>
+      
+                                        </tbody>
+                                  </table>
+  <!--FIN DE LA TABLA DE LA LISTA DE USUARIOS -->
+<br/>
+<br/>
+<br/>
+<br/>
+</section>
+</div>
+</div>
+</div>
+<!-- Fin Page Content -->
+<!-- Fin wrapper -->
+<!-- Bootstrap  JQuery popper iconos Awesome -->
+<script src="#{request.contextPath}/resources/bootstrap/js/jquery-3.4.1.min.js"></script>
+<script src="#{request.contextPath}/resources/bootstrap/js/popper.min.js"></script>
+<script src="#{request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="#{request.contextPath}/resources/iconos/js/all.min.js"></script>
+<!-- datatables JS -->
+<script type="text/javascript" src="#{request.contextPath}/resources/DataTables/datatables.min.js"></script>  
+
+<script type="text/javascript" src="#{request.contextPath}/resources/DataTables/Responsive-2.2.3/js/responsive.bootstrap4.min.js"></script>  
+
+<script type="text/javascript" src="#{request.contextPath}/resources/DataTables/Responsive-2.2.3/js/dataTables.responsive.min.js"></script>  
+<!-- para usar botones en datatables JS -->  
+
+<script src="#{request.contextPath}/resources/DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>  
+
+<script src="#{request.contextPath}/resources/DataTables/JSZip-2.5.0/jszip.min.js"></script>    
+
+<script src="#{request.contextPath}/resources/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>    
+
+<script src="#{request.contextPath}/resources/dataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="#{request.contextPath}/resources/dataTables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+<!-- código JS propìo-->    
+
+<script type="text/javascript" src="#{request.contextPath}/resources/js/table.js"></script> 
+<!-- validación del formulario -->
+<script src="#{request.contextPath}/resources/js/validacion_form.js"></script>
+<!-- Sweetalert2 -->
+<script type="text/javascript" src="#{request.contextPath}/resources/sweetalert2/package/dist/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="#{request.contextPath}/resources/js/sweetAler.js"></script>
+<!-- Abrir / cerrar panel de control -->
+<script>
+  $("#menu-toggle").click(function (e) {
+    e.preventDefault();
+    $("#content-wrapper").toggleClass("toggled");
+  });
+</script>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <title>AppSime</title>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/pag-principall.css" />
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/img/sime.png" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    </h:head>
+    <h:body>
+
+        <header id="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white contenedor">
+                <a class="navbar-brand" href="#"><img src="#{request.contextPath}/resources/img/logo.png" alt="" width="50" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-header" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" />
+                </button>
+
+                <div class="collapse navbar-collapse " id="menu-header">
+                    <div class="navbar-nav ml-auto">
+                        <a  href="#{request.contextPath}/index.xhtml"  class="btn btn-dark"><i class="fas fa-home lead mr-2"/>Inicio</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid mt-2 ">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="#{request.contextPath}/resources/img/register.png"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <div class="card-title">
+                                <h3> <i class="far fa-edit lead mr-2" style="font-size: 30px;"></i>Registrate</h3>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <h:form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="tipoDocumento"><b>Tipo de Documento</b></label>
+                                        <h:selectOneMenu value="#{registroRequest.usuReg.tipoDocumento}" id="tipoDocumento"  class="form-control">
+                                            <f:selectItem itemLabel="Cedula" itemValue="Cedula"></f:selectItem>
+                                            <f:selectItem itemLabel="Cedula Ex." itemValue="Cedula Ex."></f:selectItem>
+                                            <f:selectItem itemLabel="T. Identidad" itemValue="T. Identidad"></f:selectItem>
+                                            <f:selectItem itemLabel="Pasaporte" itemValue="Pasaporte"></f:selectItem>
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="r-documento"><b>Documento</b></label>
+                                        <h:inputText value="#{registroRequest.usuReg.CCempleado}" id="r-documento" required="true" requiredMessage="Debe introducir un documento" class="form-control"  html5:placeholder="Ingrese un numero de documento"  />
+                                        <h:message  class="text-danger" for="r-documento"></h:message>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="r-nombre"><b>Nombres</b></label>
+                                        <h:inputText value="#{registroRequest.usuReg.nombreEmpleado}" id="r-nombre" required="true" requiredMessage="Debe introducir nombres" class="form-control"   html5:placeholder="Ingrese sus nombre" />
+                                        <h:message  class="text-danger" for="r-nombre"></h:message>
+
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="apellidos"><b>Apellidos</b></label>
+                                        <h:inputText value="#{registroRequest.usuReg.apellidoEmpleado}" id="r-apellidos" required="true" requiredMessage="Debe introducir apellidos" class="form-control"   html5:placeholder="Ingrese sus apellidos" />
+                                         <h:message  class="text-danger" for="r-apellidos"></h:message>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="r-correo"><b>Correo</b></label>
+                                        <h:inputText value="#{registroRequest.usuReg.emailEmpleado}" id="r-correo" required="true" requiredMessage="Debe introducir un correo electronico" class="form-control"   html5:placeholder="Ingrese un correo electronico"  />
+                                         <h:message  class="text-danger" for="r-correo"></h:message>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="r-clave"><b>Contraseña</b></label>
+                                        <h:inputSecret value="#{registroRequest.usuReg.contrasenaEmpleado}" id="r-clave" required="true" requiredMessage="Debe introducir una contraseña" class="form-control"  html5:placeholder="*******************"/>
+                                         <h:message  class="text-danger" for="r-clave"></h:message>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="r-telefono"><b>Telefono</b></label>
+                                        <h:inputText value="#{registroRequest.usuReg.telefonoEmpleado}" id="r-telefono" required="true" requiredMessage="Debe introducir un teléfono" class="form-control"   html5:placeholder="Ingrese un número telefonico" />
+                                         <h:message  class="text-danger" for="r-telefono"></h:message>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="r-ciudad"><b>Ciudad</b></label>
+                                        <h:inputText value="#{registroRequest.usuReg.ciudadEmpleado}" id="r-ciudad" required="true" requiredMessage="Debe introducir una ciudad" class="form-control"    html5:placeholder="Ciudad actual"/>
+                                         <h:message  class="text-danger" for="r-ciudad"></h:message>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label for="r-direccion"><b>Dirección</b></label>
+                                        <h:inputText value="#{registroRequest.usuReg.direccionEmpleado}" id="r-direccion" required="true" requiredMessage="Debe introducir una dirección" class="form-control"  html5:placeholder="Ingrese su dirección"/>
+                                         <h:message  class="text-danger" for="r-direccion"></h:message>
+                                    </div>
+                                    <h:commandButton action="#{registroRequest.registrarEmpleado()}" class="btn btn-primary btn-block" value="Enviar"/>
+                                </div>
+                            </h:form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- ____________- LIBRERIA DE JQUERY, BOOTSTRAP, POPPER___________________- -->
+        <script src="#{request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>						
+        <script src="#{request.contextPath}/resources/js/bootstrap.min.js"></script>					
+        <script src="#{request.contextPath}/resources/js/popper.min.js"></script>
+        <!-- SCROOLL REVEAL JS LIBRARY CDN -->					
+        <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+        <!-- VALIDACION DEL FORMULARIO  -->					
+        <script src="#{request.contextPath}/resources/js/validacion_form.js"></script>
+
+        <!-- ICONOS -->					
+        <script src="#{request.contextPath}/resources/iconos/js/all.min.js"></script>
+
+    </h:body>
+</html>
+
